@@ -1,6 +1,7 @@
 alias l="ls -l"
 alias md="mkdir"
 alias c="cd .."
+alias gs="git status"
 
 #export PS1="\[\033[32m\]\u\[\033[m\]@\[\033[33m\]\h:\[\033[36m\]\w\[\033[m\]\$ "
 export PS1="\[\033[32m\]\u\[\033[32m\]@\[\033[32m\]\h:\[\033[36m\]\w\[\033[32m\]\$\[\033[m\] "
