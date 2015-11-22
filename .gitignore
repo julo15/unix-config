@@ -1,0 +1,8 @@
+# ignore everything
+*
+
+#except
+!README.md
+!.gitignore
+!.bash_profile
+!.vimrc
