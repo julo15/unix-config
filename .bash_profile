@@ -11,9 +11,17 @@ goup() {
     if [[ $# -eq 0 ]]; then
         cd ..
     else
+        startDirectory=$PWD
         currentDirectory=${PWD##*/}
         while [[ $currentDirectory != *"$1"* ]]; do
             cd ..
+
+            if [ "$PWD" == "/" ]; then
+                cd $startDirectory
+                echo No parent directory found containing "$1"
+                break;
+            fi
+
             currentDirectory=${PWD##*/}
         done
     fi
