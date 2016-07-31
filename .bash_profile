@@ -1,6 +1,28 @@
+cdl() {
+    if [ $# -eq 1 ]; then
+        cd $@
+    fi
+    if [ $? -eq 0 ]; then
+        ls -l
+    fi
+}
+
+goup() {
+    if [[ $# -eq 0 ]]; then
+        cd ..
+    else
+        currentDirectory=${PWD##*/}
+        while [[ $currentDirectory != *"$1"* ]]; do
+            cd ..
+            currentDirectory=${PWD##*/}
+        done
+    fi
+}
+
 alias l="ls -l"
 alias md="mkdir"
-alias c="cd .."
+alias c=goup
+alias d=cdl
 alias gs="git status"
 alias gb="git branch"
 alias gc="git checkout"
