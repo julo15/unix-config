@@ -44,6 +44,10 @@ syntax enable
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
+" color
+hi Visual ctermbg=8
+hi MatchParen ctermbg=095
+
 "set hlsearch                " highlight search result
 "set lines=60
 "set columns=140
