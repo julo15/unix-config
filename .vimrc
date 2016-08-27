@@ -19,8 +19,11 @@ filetype plugin indent on   " required for vundle
 
 " binds
 imap kj <Esc>
+imap <S-Tab> <C-d>
 vmap < <gv
 vmap > >gv
+map <Tab> >>
+map <S-Tab> <<
 map S Mzo<esc>`z
 map s mzO<esc>`z
 map , ~

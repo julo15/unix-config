@@ -31,12 +31,15 @@ alias l="ls -l"
 alias md="mkdir"
 alias c=goup
 alias d=cdl
+alias esource="vi ~/.bash_profile"
+alias resource="source ~/.bash_profile"
 alias gs="git status"
 alias gb="git branch"
 alias gc="git checkout"
 alias gl="git log"
 alias gd="git diff"
 alias gda="git-diffall"
+alias gr="./gradlew"
 
 gitdifftool() {
     if [ -z "$1" ]; then
@@ -54,7 +57,6 @@ export CLICOLOR=1
 export LSCOLORS=exfxbxdxcxegedabagacad
 
 if [ -f .aws_config.sh ]; then
+    echo Loading .aws_config.sh
     ./.aws_config.sh
-else
-    echo warn: no aws config found
 fi
