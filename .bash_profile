@@ -46,6 +46,14 @@ gitdifftool() {
     fi
 }
 
+pstoggle() {
+    if [ "$PS1" == "$PS_LONG" ]; then
+        export PS1=$PS_SHORT
+    else
+        export PS1=$PS_LONG
+    fi
+}
+
 alias l="ls -l"
 alias md="mkdir"
 alias c=goup
@@ -61,8 +69,11 @@ alias gd="git diff"
 alias gda="git-diffall"
 alias gr="./gradlew"
 alias gdt=gitdifftool
+alias p=pstoggle
 
-export PS1="\[\033[32m\]\u\[\033[32m\]@\[\033[37m\]\h:\[\033[36m\]\w\[\033[32m\]\$\[\033[m\] "
+export PS_LONG="\[\033[32m\]\u\[\033[32m\]@\[\033[37m\]\h:\[\033[36m\]\w\[\033[32m\]\$\[\033[m\] "
+export PS_SHORT="\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;153m\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]"
+export PS1=$PS_LONG
 export CLICOLOR=1
 export LSCOLORS=exfxbxdxcxegedabagacad
 
