@@ -34,7 +34,7 @@ findstr() {
         echo Example: fs foo *.*
         echo Example: fs foo *.{php,html}
     else
-        egrep -ir --include=$2 "$1" .
+        egrep -inr --include=$2 "$1" .
     fi
 }
 
