@@ -1,9 +1,30 @@
+# Functions
+
 cdl() {
     if [ $# -eq 1 ]; then
         cd $@
     fi
     if [ $? -eq 0 ]; then
         ls -l
+    fi
+}
+
+findstr() {
+    if [ "$#" -ne 2 ]; then
+        echo Usage: fs [search-term] [file-scope]
+        echo Example: fs foo *.json
+        echo Example: fs foo *.*
+        echo Example: fs foo *.{php,html}
+    else
+        egrep -inr --include=$2 "$1" .
+    fi
+}
+
+gitdifftool() {
+    if [ -z "$1" ]; then
+        git difftool
+    else
+        git difftool $1^ $1
     fi
 }
 
@@ -27,25 +48,6 @@ goup() {
     fi
 }
 
-findstr() {
-    if [ "$#" -ne 2 ]; then
-        echo Usage: fs [search-term] [file-scope]
-        echo Example: fs foo *.json
-        echo Example: fs foo *.*
-        echo Example: fs foo *.{php,html}
-    else
-        egrep -inr --include=$2 "$1" .
-    fi
-}
-
-gitdifftool() {
-    if [ -z "$1" ]; then
-        git difftool
-    else
-        git difftool $1^ $1
-    fi
-}
-
 pstoggle() {
     if [ "$PS1" == "$PS_LONG" ]; then
         export PS1=$PS_SHORT
@@ -53,6 +55,15 @@ pstoggle() {
         export PS1=$PS_LONG
     fi
 }
+
+pushd_and_ls() {
+    pushd $*
+    if [ $? -eq 0 ] ; then
+        ls -l
+    fi
+}
+
+# Aliases
 
 alias l="ls -l"
 alias md="mkdir"
@@ -69,7 +80,11 @@ alias gd="git diff"
 alias gda="git-diffall"
 alias gr="./gradlew"
 alias gdt=gitdifftool
+alias open_sdk_jar="open -a 'JD-GUI' ~/.m2/repository/com/placed/client/android-persistent-sdk/1.20/android-persistent-sdk-1.20.jar"
 alias p=pstoggle
+alias pd=pushd_and_ls
+
+# Exports
 
 export PS_LONG="\[\033[32m\]\u\[\033[32m\]@\[\033[37m\]\h:\[\033[36m\]\w\[\033[32m\]\$\[\033[m\] "
 export PS_SHORT="\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;153m\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]"
