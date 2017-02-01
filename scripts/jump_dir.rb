@@ -4,27 +4,37 @@ require 'optparse'
 
 $log_output = StringIO.new
 def log_v(line)
-
-  $log_output.puts line
-
+  $log_output.puts line unless !$options[:verbose]
 end
 
-options = {}
+def log_i(line)
+  $log_output.puts line
+end
+
+def show_usage_and_exit
+  raise "\n\n#{opts.to_s}"
+end
+
+$options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: jump [options]"
 
   opts.on('-l[PATTERN]', '--list[=PATTERN]', "List destinations") do |pattern|
     log_v "Pattern is #{pattern}!"
-    options[:list] = true
+    $options[:list] = true
   end
 
   opts.on('-v', '--[no-]verbose', 'Run verbosely') do |v|
-    options[:verbose] = v
+    $options[:verbose] = v
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    raise "\n\n#{opts.to_s}"
   end
 end.parse!
 
-if (!options[:list] && ARGV.length != 1) then
-  raise 'Need to specify a destination'
+if (!$options[:list] && ARGV.length != 1) then
+  raise 'Need to specify a destination. Run with -h for arguments'
 end
 
 pattern = ARGV[0]
@@ -53,36 +63,35 @@ log_v 'End'
 path = nil
 
 if (destinations.has_key?(pattern)) then
-  log_v "Found #{pattern}"
+  log_i "Found #{pattern}"
   path = destinations[pattern]
 
 else
     search = destinations.keys.grep(/#{pattern}/)
     if (search.length == 1) then
-      log_v "Found inexact #{pattern}"
+      log_i "Found inexact #{pattern}"
       path = destinations[search[0]]
-    elsif (options[:list]) then
-      log_v ""
-      log_v "Destinations:"
+    elsif ($options[:list]) then
+      log_i ""
+      log_i ""
+      log_i "Destinations:"
       destinations.each do |key, path|
-          log_v "#{key}\t\t#{path}"
+          log_i "  #{key}\t\t#{path}"
       end
       raise $log_output.string
     else
       if (search.length == 0) then
-        log_v "#{pattern} not found"
+        log_i "#{pattern} not found"
       else
-        log_v "Multiple matches found for #{pattern}"
+        log_i "Multiple matches found for #{pattern}"
         search.each do |key|
-          log_v "\t#{key}\t\t#{destinations[key]}"
+          log_i "\t#{key}\t\t#{destinations[key]}"
         end
       end
       raise $log_output.string
     end
 end
 
-
 # Replace ~ with ENV['HOME']
 path = path.gsub(/^~/, ENV['HOME'])
-log_v "Switching to #{path}"
 puts path
