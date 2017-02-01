@@ -1,1 +1,12 @@
-me ~
+android-client ~/Documents/placed/android-client
+docs ~/Documents/placed/docs
+Documents ~/Documents
+Downloads ~/Downloads
+git ~/Documents/git
+m2 ~/.m2/repository/com/placed/client
+mobile-shared ~/Documents/placed/mobile-shared
+placed ~/Documents/placed
+avenger ~/Documents/placed/placed-avenger
+sdk-automation ~/Documents/placed/mobile-shared/sdk-automation
+sewichi-agent ~/Documents/placed/sewichi-agent
+unix-config ~/Documents/git/unix-config
