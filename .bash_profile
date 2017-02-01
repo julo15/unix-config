@@ -133,10 +133,11 @@ export PATH=$PATH:~/Documents/placed/mitmproxy-0.18.2-osx
 if [ "$HOSTNAME" == "julian-workmac.local" ] || [ "$HOSTNAME" == "julian-workmac" ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
     export SCRIPTS_DIR=~/Documents/git/unix-config/scripts
-    export MY_PLACED_AVENGERS_DIR=~/Documents/git/placed-avenger/julian/scripts
+    #export MY_PLACED_AVENGERS_DIR=~/Documents/git/placed-avenger/julian/scripts
     export PATH=$PATH:$JAVA_HOME/bin
     export PATH=$PATH:$SCRIPTS_DIR
-    export PATH=$PATH:$MY_PLACED_AVENGERS_DIR
+    export PATH=$PATH:~/Documents/placed/placed-avenger/dan/scripts
+    #export PATH=$PATH:$MY_PLACED_AVENGERS_DIR
 fi
 
 source ~/.git-completion.bash
