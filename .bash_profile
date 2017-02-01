@@ -20,6 +20,14 @@ findstr() {
     fi
 }
 
+gitdiff() {
+    if [ -z "$1" ]; then
+        git diff
+    else
+        git diff $1^ $1
+    fi
+}
+
 gitdifftool() {
     if [ -z "$1" ]; then
         git difftool
@@ -48,6 +56,13 @@ goup() {
     fi
 }
 
+jump_dir() {
+    output=`ruby ~/Documents/myprojects/misc/ruby/alias/jump.rb $*`
+    if [ $? -eq 0 ]; then
+        cd $output
+    fi
+}
+
 pstoggle() {
     if [ "$PS1" == "$PS_LONG" ]; then
         export PS1=$PS_SHORT
@@ -69,20 +84,25 @@ alias l="ls -l"
 alias md="mkdir"
 alias c=goup
 alias d=cdl
+alias d2j="~/Downloads/dex2jar-2.0/d2j-dex2jar.sh $*"
 alias esource="vi ~/.bash_profile"
 alias resource="source ~/.bash_profile"
 alias fs=findstr
 alias gs="git status"
 alias gb="git branch"
-alias gc="git checkout"
+alias gc="git_checkout_helper $*"
 alias gl="git log"
-alias gd="git diff"
+alias gd=gitdiff
 alias gda="git-diffall"
-alias gr="./gradlew"
 alias gdt=gitdifftool
+alias gr="./gradlew"
+alias j=jump_dir
 alias open_sdk_jar="open -a 'JD-GUI' ~/.m2/repository/com/placed/client/android-persistent-sdk/1.20/android-persistent-sdk-1.20.jar"
 alias p=pstoggle
 alias pd=pushd_and_ls
+
+# Binds
+bind '\C-f:backward-kill-word'
 
 # Exports
 
@@ -96,15 +116,15 @@ export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:~/Documents/placed/placed-avenger/aaron.averbuch/pssh
+export PATH=$PATH:~/Documents/scratch-scripts
+export PATH=$PATH:~/Documents/placed/mitmproxy-0.18.2-osx
 
-if [ "$HOSTNAME" == "julian-workmac.local" ]; then
+if [ "$HOSTNAME" == "julian-workmac.local" ] || [ "$HOSTNAME" == "julian-workmac" ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
-    export SCRIPTS_DIR=~/Documents/placed/placed-avenger/julian/scripts
+    export SCRIPTS_DIR=~/Documents/git/placed-avenger/julian/scripts
     export PATH=$PATH:$JAVA_HOME/bin
     export PATH=$PATH:$SCRIPTS_DIR
 fi
 
-if [ -f .aws_config.sh ]; then
-    echo Loading .aws_config.sh
-    ./.aws_config.sh
-fi
+source ~/.git-completion.bash
