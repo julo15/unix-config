@@ -1,0 +1,37 @@
+#!/usr/bin/ruby
+
+if ARGV[0] == '--help' then
+    puts 'Usage: git_checkout_helper [branch-pattern]'
+    puts 'FYI: Running without specifying branch-pattern will list all branches'
+    exit
+end
+
+branch_output = `git branch --list "#{ARGV[0]}"`.lines
+if branch_output.length == 1 then
+    puts "Found exact match for '#{ARGV[0]}'"
+else
+    branch_output = `git branch --list "*#{ARGV[0]}*"`.lines
+end
+
+if branch_output.length == 1 then
+    branch_line = branch_output[0].strip
+    branch_line_tokens = branch_line.split(' ')
+
+    for token in branch_line_tokens
+        if !token.eql?('*') then
+            puts "Switching to branch '#{token}'"
+            puts `git checkout #{token}`
+            break
+        end
+    end
+elsif branch_output.length == 0 then
+    puts "No branches found matching '#{ARGV[0]}'"
+else
+    if ARGV[0].nil? then
+        puts "Available branches:"
+    else
+        puts "Found multiple branches matching '#{ARGV[0]}':"
+    end
+    puts branch_output
+end
+

@@ -46,6 +46,7 @@ set shiftwidth=4            " # of spaces for indentation
 syntax enable
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " color
 hi Visual ctermbg=8
