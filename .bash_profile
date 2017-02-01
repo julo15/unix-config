@@ -57,7 +57,7 @@ goup() {
 }
 
 jump_dir() {
-    output=`ruby ~/Documents/myprojects/misc/ruby/alias/jump.rb $*`
+    output=`ruby jump_dir.rb $*`
     if [ $? -eq 0 ]; then
         cd $output
     fi
@@ -108,7 +108,6 @@ alias gda="git-diffall"
 alias gdt=gitdifftool
 alias gr="./gradlew"
 alias j=jump_dir
-alias open_sdk_jar="open -a 'JD-GUI' ~/.m2/repository/com/placed/client/android-persistent-sdk/1.20/android-persistent-sdk-1.20.jar"
 alias p=pstoggle
 alias pd=pushd_and_ls
 
