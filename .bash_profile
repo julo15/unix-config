@@ -107,7 +107,7 @@ bind '\C-f:backward-kill-word'
 
 # Exports
 
-export PS_LONG="\[\033[32m\]\u\[\033[32m\]@\[\033[37m\]\h:\[\033[36m\]\w\[\033[35m\]\$(parse_git_branch)\[\033[32m\]\$(parse_git_status)\[\033[32m\]\$\[\033[m\] "
+export PS_LONG="\[\033[32m\]\u\[\033[32m\]@\[\033[37m\]\h:\[\033[36m\]\w\[\033[35m\]\$(parse_git_branch)\[\033[37m\]\$(parse_git_status)\[\033[32m\]\$\[\033[m\] "
 export PS_SHORT="\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;153m\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]"
 export PS1=$PS_LONG
 export CLICOLOR=1
