@@ -9,6 +9,14 @@ cdl() {
     fi
 }
 
+epoch() {
+    if [ "$#" -ne 1 ]; then
+        echo Usage: epoch [time-in-millis]
+    else
+        date -r $(( $1 / 1000 ))
+    fi
+}
+
 findstr() {
     if [ "$#" -ne 2 ]; then
         echo Usage: fs [search-term] [file-scope]
