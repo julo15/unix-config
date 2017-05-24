@@ -1,3 +1,4 @@
+breadcrumbs ~/Documents/placed/android-breadcrumbs
 android-client ~/Documents/placed/android-client
 docs ~/Documents/placed/docs
 Documents ~/Documents
@@ -9,4 +10,5 @@ placed ~/Documents/placed
 avenger ~/Documents/placed/placed-avenger
 sdk-automation ~/Documents/placed/mobile-shared/sdk-automation
 sewichi-agent ~/Documents/placed/sewichi-agent
+surveys ~/Documents/placed/placed-avenger/dan/scripts/surveys
 unix-config ~/Documents/git/unix-config
