@@ -121,6 +121,8 @@ export PS1=$PS_LONG
 export CLICOLOR=1
 export LSCOLORS=exfxbxdxcxegedabagacad
 
+export VISUAL=vim # use C-x C-e to edit command line in vim
+
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/tools
