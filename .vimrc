@@ -47,6 +47,7 @@ set hlsearch                " highlight search result
 syntax enable
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd InsertEnter,InsertLeave * set cul!
 
