@@ -135,7 +135,3 @@ if [ "$HOSTNAME" == "julian-workmac.local" ]; then
     export PATH=$PATH:$SCRIPTS_DIR
 fi
 
-if [ -f .aws_config.sh ]; then
-    echo Loading .aws_config.sh
-    ./.aws_config.sh
-fi

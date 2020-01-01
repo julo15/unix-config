@@ -10,10 +10,14 @@ Clone this repo somewhere, and then run `./make_links`.
 
 # Install homebrew: https://docs.brew.sh/Installation
 # Install vundle: https://github.com/VundleVim/Vundle.vim
+# Edit bash_profile to put unix-config/scripts directory on the path
 
 brew install git
 npm i -g yarn
 brew cask install visual-studio-code
+
+git config --global push.default current
+git config --global alias.lo 'log --oneline -5'
 
 ```
 
