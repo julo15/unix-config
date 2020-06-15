@@ -10,6 +10,7 @@ echo "    .inputrc"
 echo "    .jumpdests"
 echo "    .tmux.conf"
 echo "    .vimrc"
+echo "    .zshrc"
 echo
 read -p "Proceed? (y/N): " -n 1 -r
 echo
@@ -21,11 +22,13 @@ then
     rm ~/.jumpdests
     rm ~/.tmux.conf
     rm ~/.vimrc
+    rm ~/.zshrc
     ln -s $SCRIPT_DIR/.bash_profile ~/.bash_profile
     ln -s $SCRIPT_DIR/.inputrc      ~/.inputrc
     ln -s $SCRIPT_DIR/.jumpdests    ~/.jumpdests
     ln -s $SCRIPT_DIR/.tmux.conf    ~/.tmux.conf
     ln -s $SCRIPT_DIR/.vimrc        ~/.vimrc
+    ln -s $SCRIPT_DIR/.zshrc        ~/.zshrc
     echo
     echo Done.
     ls -o ~/.bash_profile
@@ -33,6 +36,7 @@ then
     ls -o ~/.jumpdests
     ls -o ~/.tmux.conf
     ls -o ~/.vimrc
+    ls -o ~/.zshrc
     echo
 else
     echo Denied!

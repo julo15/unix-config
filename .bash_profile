@@ -110,6 +110,11 @@ alias j=jump_dir
 alias p=pstoggle
 alias pd=pushd_and_ls
 
+alias jumpdev="ssh_me_calmly -i ~/.ssh/ace-test-us-west-2.pem -h ec2-54-212-83-25.us-west-2.compute.amazonaws.com -u ubuntu -L 55555:armstrong-1.cz1ukslbgxwf.us-west-2.rds.amazonaws.com:5432"
+alias jumpprod="ssh_me_calmly -i ~/.ssh/ace-prod-us-west-2.pem -h ec2-54-188-162-207.us-west-2.compute.amazonaws.com -u ubuntu -L 55555:armstrong-1.csuzx7lbhppu.us-west-2.rds.amazonaws.com:5432"
+
+alias psql_armstrong="psql -p 55555 -d armstrong -h localhost -U app_armstrong"
+
 # Binds
 bind '\C-f:backward-kill-word'
 
@@ -128,6 +133,9 @@ export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+export PATH=$PATH:~/Documents/unix-config/scripts
+export PATH=$PATH:~/Documents/squid_toolkit
+
 if [ "$HOSTNAME" == "julian-workmac.local" ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
     export SCRIPTS_DIR=~/Documents/placed/placed-avenger/julian/scripts
@@ -135,3 +143,5 @@ if [ "$HOSTNAME" == "julian-workmac.local" ]; then
     export PATH=$PATH:$SCRIPTS_DIR
 fi
 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
