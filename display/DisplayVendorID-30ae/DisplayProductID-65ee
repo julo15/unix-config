@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>DisplayProductName</key>
+  <string>LEN Y27q-20 X</string>
+  <key>IODisplayEDID</key>
+  <data>AP///////wAwru5lWEhUNgseAQOAPCJ4IkRVqVVNnSYPUFShCACBgJUAqcCz
+ANHAAQEBAQEBZOcAaqCgZ1AVIDUAVVAhAAAacMIAoKCgVVAwIDUAVVAhAAAa
+AAAA/QAwkB7fPAAKICAgICAgAAAA/ABMRU4gWTI3cS0yMAogAQACA0TBTGFg
+H5AUAQMEEhMFAiMJBweDAQAA4gDVZwMMABAAODxn2F3EAXiAB2gaAAABATCQ
+AOMFwADjDwMA5gYHAWFWHFZeAKCgoClQMCA1AFVQIQAAHqBzAGqgoClQCCA1
+AFVQIQAAGnCgAKCgoEZQMCA1AFVQIQAAHgAAAAAAow==
+</data>
+  <key>DisplayVendorID</key>
+  <integer>12462</integer>
+  <key>DisplayProductID</key>
+  <integer>26094</integer>
+  <key>scale-resolutions</key>
+  <array>
+    <data>AAAKAAAABaAAAAABACAAAA==</data>
+    <data>AAAFAAAAAtAAAAABACAAAA==</data>
+    <data>AAAPAAAACHAAAAABACAAAA==</data>
+    <data>AAAHgAAABDgAAAABACAAAA==</data>
+    <data>AAAMgAAABwgAAAABACAAAA==</data>
+    <data>AAAGQAAAA4QAAAABACAAAA==</data>
+    <data>AAAKAgAABaAAAAABACAAAA==</data>
+    <data>AAAKrAAABgAAAAABACAAAA==</data>
+    <data>AAAFVgAAAwAAAAABACAAAA==</data>
+    <data>AAARgAAACdgAAAABACAAAA==</data>
+    <data>AAAUAAAAC0AAAAABACAAAA==</data>
+  </array>
+</dict>
+</plist>
