@@ -76,6 +76,10 @@ alias j=jump_dir
 # Auto complete
 setopt menucomplete
 
+# Delete word style
+autoload -U select-word-style
+select-word-style bash
+
 # Git
 ZSH_DISABLE_COMPFIX=true
 autoload -Uz compinit && compinit
@@ -94,3 +98,4 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/Documents/unix-config/scripts
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
