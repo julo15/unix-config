@@ -18,7 +18,7 @@ See the Basic guide below on instructions on using `patch-edid.rb`. In this repo
 
 ## Resources
 
-### [God guide](https://forums.macrumors.com/threads/guide-fixing-external-monitor-scaling-and-fuzziness-issues-with-mbp-and-osx.2179968/page-2)
+### [God guide](https://forums.macrumors.com/threads/guide-fixing-external-monitor-scaling-and-fuzziness-issues-with-mbp-and-osx.2179968/)
 
 Describes the winning solution.
 
