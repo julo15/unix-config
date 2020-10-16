@@ -1,6 +1,6 @@
 # External display setup
 
-## Instructions
+## Instructions (if you already have your override file)
 
 1. Reboot machine, hold cmd+R to enter recovery mode
 2. Log in and use Disk Utility to mount Macintosh HD. Close Disk Utility.
@@ -15,6 +15,12 @@ reboot
 ## Generating new override files
 
 See the Basic guide below on instructions on using `patch-edid.rb`. In this repo, `patch-edid-ex.rb` is an improvement for the scenario where the display has a single extension block.
+
+## Instructions (if you have never done this before)
+
+1. Follow [comsysto display override tool](https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/) for everything **BUT** step 4!
+2. Instead of that step 4, follow the instructions at the top of this page (involving restarting in recovery mode) to copy your override file into `/System/Library/Displays/Contents/Resources/Overrides`.
+3. Proceed to step 5 in comsysto's guide.
 
 ## Resources
 
