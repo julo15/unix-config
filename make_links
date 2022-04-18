@@ -6,6 +6,7 @@ echo
 echo WARNING! This will overwrite the following in your ~ directory:
 echo
 echo "    .bash_profile"
+echo "    .gitconfig"
 echo "    .inputrc"
 echo "    .jumpdests"
 echo "    .tmux.conf"
@@ -18,12 +19,14 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     rm ~/.bash_profile
+    rm ~/.gitconfig
     rm ~/.inputrc
     rm ~/.jumpdests
     rm ~/.tmux.conf
     rm ~/.vimrc
     rm ~/.zshrc
     ln -s $SCRIPT_DIR/.bash_profile ~/.bash_profile
+    ln -s $SCRIPT_DIR/.gitconfig    ~/.gitconfig
     ln -s $SCRIPT_DIR/.inputrc      ~/.inputrc
     ln -s $SCRIPT_DIR/.jumpdests    ~/.jumpdests
     ln -s $SCRIPT_DIR/.tmux.conf    ~/.tmux.conf
@@ -32,6 +35,7 @@ then
     echo
     echo Done.
     ls -o ~/.bash_profile
+    ls -o ~/.gitconfig
     ls -o ~/.inputrc
     ls -o ~/.jumpdests
     ls -o ~/.tmux.conf

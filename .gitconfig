@@ -1,0 +1,20 @@
+[push]
+	default = current
+[alias]
+	lo = log --oneline -5
+	new = checkout -b
+	amend = commit --amend -C HEAD
+	discard = checkout HEAD
+	autosquash = rebase -i --autosquash
+	fixup = commit --fixup
+
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
