@@ -7,6 +7,9 @@
 	discard = checkout HEAD
 	autosquash = rebase -i --autosquash
 	fixup = commit --fixup
+[user]
+	name = Julian Lo
+	email = julian@sketchy.com
 
 [core]
     pager = delta

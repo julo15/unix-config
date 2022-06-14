@@ -67,11 +67,18 @@ alias d=cdl
 alias esource="vi ~/.zshrc"
 alias fs=findstr
 alias gs="git status"
-alias gb="git branch"
+alias gb="git branch --sort=-committerdate"
 alias gc="git_checkout_helper $*"
 alias gd="git diff"
 alias gr="./gradlew"
+alias gss="git_smart_switch $*"
 alias j=jump_dir
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=2000
+SAVEHIST=1000
+alias hist="history -50"
 
 # Auto complete
 setopt menucomplete
@@ -98,4 +105,12 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/Documents/unix-config/scripts
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

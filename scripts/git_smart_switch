@@ -1,0 +1,63 @@
+#!/usr/bin/ruby
+
+if ARGV[0] == '--help' then
+    puts 'Usage: git_smart_switch [-n] [branch-pattern]'
+    puts 'FYI: Running without specifying branch-pattern will list all branches'
+    exit
+end
+
+branch_output = `git branch --list "#{ARGV[0]}"`.lines
+if branch_output.length == 1 then
+    puts "Found exact match for '#{ARGV[0]}'"
+else
+    branch_output = `git branch --list "*#{ARGV[0]}*"`.lines
+end
+
+if branch_output.length == 1 then
+    branch_line = branch_output[0].strip
+    branch_line_tokens = branch_line.split(' ')
+
+    for token in branch_line_tokens
+        if !token.eql?('*') then
+            current_branch = `git branch --show-current`.strip
+
+            puts "Switching from '#{current_branch}' --> '#{token}'"
+            puts
+
+            stash_message = "smart-switch|#{current_branch}"
+
+            puts "Stashing changes:"
+            puts `git stash -u -m '#{stash_message}'`
+            puts
+
+            puts "Switching to '#{token}'"
+            puts `git checkout #{token}`
+            puts
+
+            puts "Looking for stash to apply"
+            new_stash_message = "smart-switch|#{token}"
+            found_stashes = `git stash list`.lines.select {|line| line.strip.end_with?(new_stash_message)}
+
+            if found_stashes.length > 0 then
+              matches = found_stashes[0].match /stash@{(\d+)}/
+              index = matches[1]
+              puts "Applying stash"
+              puts `git stash pop --index #{index}`
+            else
+              puts "No stashes found for branch '#{token}'"
+            end
+
+            break
+        end
+    end
+elsif branch_output.length == 0 then
+    puts "No branches found matching '#{ARGV[0]}'"
+else
+    if ARGV[0].nil? then
+        puts "Available branches:"
+    else
+        puts "Found multiple branches matching '#{ARGV[0]}':"
+    end
+    puts branch_output
+end
+
