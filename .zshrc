@@ -60,18 +60,24 @@ parse_git_status() {
 
 # Aliases
 
-alias l="ls -l"
+alias l="ls -l --color=auto"
 alias md="mkdir"
 alias c=goup
 alias d=cdl
 alias esource="vi ~/.zshrc"
 alias fs=findstr
 alias gs="git status"
-alias gb="git branch"
+alias gb="git branch --sort=committerdate"
 alias gc="git_checkout_helper $*"
 alias gd="git diff"
 alias gr="./gradlew"
 alias j=jump_dir
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=2000
+SAVEHIST=1000
+alias hist="history -50"
 
 # Auto complete
 setopt menucomplete

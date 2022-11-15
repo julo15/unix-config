@@ -16,7 +16,10 @@ Clone this repo somewhere, and then run `./make_links`.
 brew install git
 brew install git-delta
 brew install yarn
-brew cask install visual-studio-code
+brew install --cask visual-studio-code
+brew install --cask slack
+brew install --cask spotify
+brew install --cask zoom
 
 # Look at `.gitconfig` for useful aliases
 
