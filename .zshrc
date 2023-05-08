@@ -5,7 +5,7 @@ cdl() {
         cd $@
     fi
     if [ $? -eq 0 ]; then
-        ls -l
+        ls -l --color
     fi
 }
 
@@ -60,7 +60,7 @@ parse_git_status() {
 
 # Aliases
 
-alias l="ls -l --color=auto"
+alias l="ls -l --color"
 alias md="mkdir"
 alias c=goup
 alias d=cdl
@@ -68,7 +68,7 @@ alias esource="vi ~/.zshrc"
 alias fs=findstr
 alias gs="git status"
 alias gb="git branch --sort=committerdate"
-alias gc="git_checkout_helper $*"
+alias gc="git-ss $*"
 alias gd="git diff"
 alias gr="./gradlew"
 alias j=jump_dir
@@ -104,4 +104,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/Documents/unix-config/scripts
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This lo
 
