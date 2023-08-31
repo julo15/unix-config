@@ -26,9 +26,8 @@ map <Tab> >>
 map <S-Tab> <<
 map S Mzo<esc>`z
 map s mzO<esc>`z
-map , ~
-map <F3> :set syntax=xml<Enter>
-map <F4> :cd %:p:h<Enter>:pwd<Enter>
+map  :b#<CR>
+map <S-> :bnext<CR>
 
 " settings
 set ignorecase              " case-insensitive search

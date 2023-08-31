@@ -1,7 +1,7 @@
 [push]
 	default = current
 [alias]
-	lo = log --oneline -5
+	lo = log --oneline --format=\"%C(auto)%h%d %s %C(blue)(%cr)%C(reset)\" -5
 	new = checkout -b
 	amend = commit --amend -C HEAD
 	discard = checkout HEAD
@@ -10,6 +10,7 @@
 
 [core]
     pager = delta
+	autocrlf = input
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -18,3 +19,9 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+[branch]
+	autosetuprebase = always
+
+[user]
+	email = julian.lo@gmail.com
+	name = Julian Lo
