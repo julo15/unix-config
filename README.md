@@ -4,6 +4,29 @@
 
 Clone this repo somewhere, and then run `./make_links`.
 
+## Local Secrets And Overrides
+
+This repo intentionally keeps secrets out of tracked files.
+
+- `.zshrc` loads untracked local files if they exist:
+  - `~/.zshrc.local`
+  - `~/.zshrc.d/*.local.zsh`
+  - Example split: `~/.zshrc.d/mozi.local.zsh` and `~/.zshrc.d/mozi.secrets.local.zsh`
+Create local files as needed, then customize locally. The `*.local.*` files are ignored by git.
+
+## Git Config Split
+
+- `.gitconfig` includes `~/.gitconfig.local` for all machine-specific and org-specific overrides.
+- Keep Mozi-specific settings directly in `~/.gitconfig.local`:
+
+```ini
+[user]
+    name = Julian Lo
+    email = julian@mozi.app
+```
+
+- `~/.gitconfig.local` can also use conditional includes when needed.
+
 ## More stuff to install on new machines
 
 ```
@@ -34,4 +57,3 @@ brew install --cask zoom
 #### Settings sync
 - Install from Extensions pane
 - Login with github, select existing gist
-

@@ -17,6 +17,12 @@ Bundle 'scrooloose/syntastic'
 call vundle#end()           " required for vundle
 filetype plugin indent on   " required for vundle
 
+" nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 " binds
 imap kj <Esc>
 imap <S-Tab> <C-d>

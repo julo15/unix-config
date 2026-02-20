@@ -9,17 +9,6 @@ cdl() {
     fi
 }
 
-findstr() {
-    if [ "$#" -ne 2 ]; then
-        echo Usage: fs [search-term] [file-scope]
-        echo Example: fs foo *.json
-        echo Example: fs foo *.*
-        echo Example: fs foo *.{php,html}
-    else
-        egrep -inr --include=$2 "$1" .
-    fi
-}
-
 goup() {
     if [[ $# -eq 0 ]]; then
         cd ..
@@ -40,11 +29,8 @@ goup() {
     fi
 }
 
-jump_dir() {
-    output=`ruby jump_dir.rb $*`
-    if [ $? -eq 0 ]; then
-        cd $output
-    fi
+jwt() {
+    jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"
 }
 
 parse_git_branch() {
@@ -65,13 +51,14 @@ alias md="mkdir"
 alias c=goup
 alias d=cdl
 alias esource="vi ~/.zshrc"
-alias fs=findstr
 alias gs="git status"
 alias gb="git branch --sort=committerdate"
 alias gc="git-ss $*"
 alias gd="git diff"
-alias gr="./gradlew"
-alias j=jump_dir
+alias gds="git diff --staged"
+alias jwt=jwt
+alias pjq="pbpaste | jq"
+alias sp="spatialite"
 
 # History
 HISTFILE=~/.zsh_history
@@ -92,7 +79,7 @@ autoload -Uz compinit && compinit
 
 # Prompt
 setopt prompt_subst
-PROMPT='%F{2}%n@%F{254}%m:%F{51}%~%F{5}$(parse_git_branch)%F{7}$(parse_git_status)%F{2}$%f '
+PROMPT='%F{51}%~%F{5}$(parse_git_branch)%F{7}$(parse_git_status)%F{2}$%f '
 
 # Exports
 
@@ -102,6 +89,11 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:~/Documents/unix-config/scripts
+export PATH=$PATH:/opt/homebrew/bin
+
+export PATH=$PATH:$HOME/.mint/bin
+
+export PATH=~/.asdf/shims:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -109,3 +101,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This lo
 
+
+# Ruby
+# eval "$(rbenv init - zsh)"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+alias cls='claude --dangerously-skip-permissions'
+alias cdls='codex --dangerously-bypass-approvals-and-sandbox'
+
+# Added as suggested by Claude Code
+export PATH="$HOME/.local/bin:$PATH"
+
+# Codex
+export CODEX_HOME="$HOME/.agents"
+
+# Local overrides and secrets (untracked)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+if [ -d "$HOME/.zshrc.d" ]; then
+  for file in "$HOME/.zshrc.d/"*.local.zsh(.N); do
+    [ -f "$file" ] && source "$file"
+  done
+fi
