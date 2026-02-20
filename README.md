@@ -17,21 +17,15 @@ Create local files as needed, then customize locally. The `*.local.*` files are 
 ## Git Config Split
 
 - `.gitconfig` includes `~/.gitconfig.local` for all machine-specific and org-specific overrides.
-- Keep Mozi-specific includes/rules in `~/.gitconfig.local`.
-- `~/.gitconfig.local` can use conditional includes. Example:
-
-```ini
-[includeIf "gitdir:~/Documents/mozi/"]
-    path = ~/.gitconfig.mozi
-```
-
-- Put Mozi-only settings (for example, user identity) in `~/.gitconfig.mozi`:
+- Keep Mozi-specific settings directly in `~/.gitconfig.local`:
 
 ```ini
 [user]
     name = Julian Lo
     email = julian@mozi.app
 ```
+
+- `~/.gitconfig.local` can also use conditional includes when needed.
 
 ## More stuff to install on new machines
 
