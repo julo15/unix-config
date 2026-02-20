@@ -13,12 +13,7 @@ This repo intentionally keeps secrets out of tracked files.
   - `~/.zshrc.d/*.local.zsh`
 - `.zshrc` loads tracked modules from:
   - `~/.zshrc.d/*.zsh` (e.g., `mozi.zsh`)
-- Example templates in this repo:
-  - `.zshrc.local.example`
-  - `.zshrc.d/mozi.local.zsh.example`
-  - `.zshrc.d/personal.local.zsh.example`
-
-Copy the example you want, then customize locally. The `*.local.*` files are ignored by git.
+Create local files as needed, then customize locally. The `*.local.*` files are ignored by git.
 
 ## Git Config Split
 

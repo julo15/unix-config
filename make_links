@@ -13,20 +13,22 @@ echo "    .jumpdests"
 echo "    .tmux.conf"
 echo "    .vimrc"
 echo "    .zshrc"
+echo "    .zshrc.d"
 echo
 read -p "Proceed? (y/N): " -n 1 -r
 echo
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    trash ~/.bash_profile
-    trash ~/.gitconfig
-    trash ~/.gitconfig.mozi
-    trash ~/.inputrc
-    trash ~/.jumpdests
-    trash ~/.tmux.conf
-    trash ~/.vimrc
-    trash ~/.zshrc
+    [ -e ~/.bash_profile ] && trash ~/.bash_profile
+    [ -e ~/.gitconfig ] && trash ~/.gitconfig
+    [ -e ~/.gitconfig.mozi ] && trash ~/.gitconfig.mozi
+    [ -e ~/.inputrc ] && trash ~/.inputrc
+    [ -e ~/.jumpdests ] && trash ~/.jumpdests
+    [ -e ~/.tmux.conf ] && trash ~/.tmux.conf
+    [ -e ~/.vimrc ] && trash ~/.vimrc
+    [ -e ~/.zshrc ] && trash ~/.zshrc
+    [ -e ~/.zshrc.d ] && trash ~/.zshrc.d
     ln -s $SCRIPT_DIR/.bash_profile ~/.bash_profile
     ln -s $SCRIPT_DIR/.gitconfig    ~/.gitconfig
     ln -s $SCRIPT_DIR/.gitconfig.mozi ~/.gitconfig.mozi
@@ -35,6 +37,7 @@ then
     ln -s $SCRIPT_DIR/.tmux.conf    ~/.tmux.conf
     ln -s $SCRIPT_DIR/.vimrc        ~/.vimrc
     ln -s $SCRIPT_DIR/.zshrc        ~/.zshrc
+    ln -s $SCRIPT_DIR/.zshrc.d      ~/.zshrc.d
     echo
     echo Done.
     ls -o ~/.bash_profile
@@ -45,6 +48,7 @@ then
     ls -o ~/.tmux.conf
     ls -o ~/.vimrc
     ls -o ~/.zshrc
+    ls -o ~/.zshrc.d
     echo
 else
     echo Denied!

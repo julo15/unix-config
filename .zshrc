@@ -9,42 +9,6 @@ cdl() {
     fi
 }
 
-cleanup_git_branches() {
-    # Define an array of branches to exclude from deletion
-    exclude_branches=("main")
-
-    # Fetch all branch names except the current one
-    branches=$(git branch | grep -v "\*" | awk '{print $1}')
-
-    # Iterate over each branch name
-    for branch in $branches; do
-        # Check if the current branch is in the exclude list
-        if [[ " ${exclude_branches[@]} " =~ " ${branch} " ]]; then
-            echo "Skipping excluded branch: $branch"
-            continue
-        fi
-
-        # Attempt to delete the branch
-        git branch -d "$branch"
-        if [ $? -eq 0 ]; then
-            echo "Deleted branch: $branch"
-        else
-            echo "Failed to delete branch: $branch"
-        fi
-    done
-}
-
-findstr() {
-    if [ "$#" -ne 2 ]; then
-        echo Usage: fs [search-term] [file-scope]
-        echo Example: fs foo *.json
-        echo Example: fs foo *.*
-        echo Example: fs foo *.{php,html}
-    else
-        egrep -inr --include=$2 "$1" .
-    fi
-}
-
 goup() {
     if [[ $# -eq 0 ]]; then
         cd ..
@@ -62,13 +26,6 @@ goup() {
 
             currentDirectory=${PWD##*/}
         done
-    fi
-}
-
-jump_dir() {
-    output=`ruby jump_dir.rb $*`
-    if [ $? -eq 0 ]; then
-        cd $output
     fi
 }
 
@@ -94,15 +51,11 @@ alias md="mkdir"
 alias c=goup
 alias d=cdl
 alias esource="vi ~/.zshrc"
-alias fs=findstr
 alias gs="git status"
 alias gb="git branch --sort=committerdate"
 alias gc="git-ss $*"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gr="./gradlew"
-# alias git_cleanup="git branch | grep -v "\*" | grep -v "main" | awk '{system(\"git branch -d \"$1)}'"
-alias j=jump_dir
 alias jwt=jwt
 alias pjq="pbpaste | jq"
 alias sp="spatialite"

@@ -1,5 +1,0 @@
-# Personal-only secrets and overrides (untracked).
-# Copy to ~/.zshrc.d/personal.local.zsh and customize.
-
-# Example:
-# export SOME_PERSONAL_API_TOKEN="..."
