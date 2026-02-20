@@ -11,8 +11,7 @@ This repo intentionally keeps secrets out of tracked files.
 - `.zshrc` loads untracked local files if they exist:
   - `~/.zshrc.local`
   - `~/.zshrc.d/*.local.zsh`
-- `.zshrc` loads tracked modules from:
-  - `~/.zshrc.d/*.zsh` (e.g., `mozi.zsh`)
+  - Example split: `~/.zshrc.d/mozi.local.zsh` and `~/.zshrc.d/mozi.secrets.local.zsh`
 Create local files as needed, then customize locally. The `*.local.*` files are ignored by git.
 
 ## Git Config Split

@@ -93,13 +93,6 @@ export PATH=$PATH:/opt/homebrew/bin
 
 export PATH=$PATH:$HOME/.mint/bin
 
-export GOPATH=~/go
-export PATH=$PATH:~/go/bin
-export GOPROXY=https://proxy.golang.org
-alias gocov="go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out"
-export GONOPROXY=github.com/mozi-app
-export GONOSUMDB=$GONOPROXY
-
 export PATH=~/.asdf/shims:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -113,11 +106,6 @@ export NVM_DIR="$HOME/.nvm"
 # eval "$(rbenv init - zsh)"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-# For swift protobuf
-export PATH=$PATH:$HOME/Documents/open/swift-protobuf/.build/release
-
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 alias cls='claude --dangerously-skip-permissions'
 alias cdls='codex --dangerously-bypass-approvals-and-sandbox'
 
@@ -126,16 +114,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Codex
 export CODEX_HOME="$HOME/.agents"
-
-# Claudimize
-export PATH="/Users/julianlo/Documents/me/claudimize/scripts:$PATH"
-
-# Tracked modular config
-if [ -d "$HOME/.zshrc.d" ]; then
-  for file in "$HOME/.zshrc.d/"*.zsh(.N); do
-    [ -f "$file" ] && source "$file"
-  done
-fi
 
 # Local overrides and secrets (untracked)
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
