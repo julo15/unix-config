@@ -4,6 +4,16 @@
 
 Clone this repo somewhere, and then run `./make_links`.
 
+## Pre-commit Hook
+
+This repo includes a git pre-commit hook at `.githooks/pre-commit` that blocks commits when likely secrets are detected in staged files.
+
+Enable it once per clone:
+
+```bash
+./scripts/install_hooks
+```
+
 ## Local Secrets And Overrides
 
 This repo intentionally keeps secrets out of tracked files.
