@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Scan staged file contents for likely secrets before commit.
+patterns=(
+  'AKIA[0-9A-Z]{16}'
+  'ASIA[0-9A-Z]{16}'
+  'ghp_[A-Za-z0-9]{36,}'
+  'github_pat_[A-Za-z0-9_]{80,}'
+  'xox[baprs]-[A-Za-z0-9-]{10,}'
+  'lin_api_[A-Za-z0-9]{20,}'
+  '-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----'
+  '(?i)(password|passwd|pwd|token|secret|api[_-]?key)\s*[:=]\s*["'\'']?[A-Za-z0-9._\-]{12,}'
+)
+
+staged_files="$(git diff --cached --name-only --diff-filter=ACMR)"
+if [ -z "${staged_files}" ]; then
+  exit 0
+fi
+
+tmpfile="$(mktemp)"
+trap 'trash "${tmpfile}" >/dev/null 2>&1 || true' EXIT
+
+while IFS= read -r file; do
+  [ -n "${file}" ] || continue
+  git show ":${file}" >"${tmpfile}" 2>/dev/null || continue
+
+  for pattern in "${patterns[@]}"; do
+    if rg -n --pcre2 "${pattern}" "${tmpfile}" >/dev/null 2>&1; then
+      echo "pre-commit: potential secret detected in staged file: ${file}"
+      echo "pre-commit: pattern matched: ${pattern}"
+      echo "pre-commit: commit aborted"
+      exit 1
+    fi
+  done
+done <<<"${staged_files}"
+
+exit 0

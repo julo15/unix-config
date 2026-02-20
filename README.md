@@ -2,7 +2,22 @@
 
 ## Installation
 
-Clone this repo somewhere, and then run `./make_links`.
+Clone this repo somewhere, then run:
+
+```bash
+./make_links
+./scripts/install_hooks
+```
+
+## Pre-commit Hook
+
+This repo includes a git pre-commit hook at `.githooks/pre-commit` that blocks commits when likely secrets are detected in staged files.
+
+Enable it once per clone:
+
+```bash
+./scripts/install_hooks
+```
 
 ## Local Secrets And Overrides
 
@@ -34,7 +49,7 @@ Create local files as needed, then customize locally. The `*.local.*` files are 
 # Install warp: https://www.warp.dev/ (and enable PS1 honouring)
 # Install homebrew: https://docs.brew.sh/Installation
 # Install vundle: https://github.com/VundleVim/Vundle.vim
-# Edit bash_profile to put unix-config/scripts directory on the path
+# Add unix-config/scripts directory to your shell PATH (for example in .zshrc)
 
 brew install git
 brew install git-delta

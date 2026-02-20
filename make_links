@@ -5,7 +5,6 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo
 echo WARNING! This will overwrite the following in your ~ directory:
 echo
-echo "    .bash_profile"
 echo "    .gitconfig"
 echo "    .inputrc"
 echo "    .jumpdests"
@@ -19,7 +18,6 @@ echo
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    [ -e ~/.bash_profile ] && trash ~/.bash_profile
     [ -e ~/.gitconfig ] && trash ~/.gitconfig
     [ -e ~/.inputrc ] && trash ~/.inputrc
     [ -e ~/.jumpdests ] && trash ~/.jumpdests
@@ -27,7 +25,6 @@ then
     [ -e ~/.vimrc ] && trash ~/.vimrc
     [ -e ~/.zshrc ] && trash ~/.zshrc
     [ -e ~/.zshrc.d ] && trash ~/.zshrc.d
-    ln -s $SCRIPT_DIR/.bash_profile ~/.bash_profile
     ln -s $SCRIPT_DIR/.gitconfig    ~/.gitconfig
     ln -s $SCRIPT_DIR/.inputrc      ~/.inputrc
     ln -s $SCRIPT_DIR/.jumpdests    ~/.jumpdests
@@ -37,7 +34,6 @@ then
     ln -s $SCRIPT_DIR/.zshrc.d      ~/.zshrc.d
     echo
     echo Done.
-    ls -o ~/.bash_profile
     ls -o ~/.gitconfig
     ls -o ~/.inputrc
     ls -o ~/.jumpdests
