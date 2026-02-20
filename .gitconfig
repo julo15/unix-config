@@ -1,5 +1,3 @@
-[includeIf "gitdir:~/Documents/mozi/"]
-	path = ~/.gitconfig.mozi
 [include]
 	path = ~/.gitconfig.local
 

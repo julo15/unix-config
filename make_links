@@ -7,7 +7,6 @@ echo WARNING! This will overwrite the following in your ~ directory:
 echo
 echo "    .bash_profile"
 echo "    .gitconfig"
-echo "    .gitconfig.mozi"
 echo "    .inputrc"
 echo "    .jumpdests"
 echo "    .tmux.conf"
@@ -22,7 +21,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     [ -e ~/.bash_profile ] && trash ~/.bash_profile
     [ -e ~/.gitconfig ] && trash ~/.gitconfig
-    [ -e ~/.gitconfig.mozi ] && trash ~/.gitconfig.mozi
     [ -e ~/.inputrc ] && trash ~/.inputrc
     [ -e ~/.jumpdests ] && trash ~/.jumpdests
     [ -e ~/.tmux.conf ] && trash ~/.tmux.conf
@@ -31,7 +29,6 @@ then
     [ -e ~/.zshrc.d ] && trash ~/.zshrc.d
     ln -s $SCRIPT_DIR/.bash_profile ~/.bash_profile
     ln -s $SCRIPT_DIR/.gitconfig    ~/.gitconfig
-    ln -s $SCRIPT_DIR/.gitconfig.mozi ~/.gitconfig.mozi
     ln -s $SCRIPT_DIR/.inputrc      ~/.inputrc
     ln -s $SCRIPT_DIR/.jumpdests    ~/.jumpdests
     ln -s $SCRIPT_DIR/.tmux.conf    ~/.tmux.conf
@@ -42,7 +39,6 @@ then
     echo Done.
     ls -o ~/.bash_profile
     ls -o ~/.gitconfig
-    ls -o ~/.gitconfig.mozi
     ls -o ~/.inputrc
     ls -o ~/.jumpdests
     ls -o ~/.tmux.conf
