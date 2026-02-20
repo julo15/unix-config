@@ -2,7 +2,12 @@
 
 ## Installation
 
-Clone this repo somewhere, and then run `./make_links`.
+Clone this repo somewhere, then run:
+
+```bash
+./make_links
+./scripts/install_hooks
+```
 
 ## Pre-commit Hook
 
