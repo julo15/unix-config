@@ -1,16 +1,22 @@
+[includeIf "gitdir:~/Documents/mozi/"]
+	path = ~/.gitconfig.mozi
+[include]
+	path = ~/.gitconfig.local
+
 [push]
 	default = current
 [alias]
-	lo = log --oneline --format=\"%C(auto)%h%d %s %C(blue)(%cr)%C(reset)\" -5
+    lo = log --pretty=format:'%C(yellow)%h %C(green)[%ar] %C(auto)%s%d' -5 --decorate
 	new = checkout -b
 	amend = commit --amend -C HEAD
 	discard = checkout HEAD
 	autosquash = rebase -i --autosquash
 	fixup = commit --fixup
+    headup = checkout HEAD^ --
 
 [core]
     pager = delta
-	autocrlf = input
+    excludesfile = ~/.gitignore
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -19,9 +25,10 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
-[branch]
-	autosetuprebase = always
-
-[user]
-	email = julian.lo@gmail.com
-	name = Julian Lo
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main
